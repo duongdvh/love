@@ -1,0 +1,423 @@
+/* ==========================================
+   1. CSS VARIABLES & 4 GEN Z THEMES
+   ========================================== */
+:root {
+    --bg-gradient-1: #ffdde1;
+    --bg-gradient-2: #ee9ca7;
+    --bg-gradient-3: #bae6fd;
+    --bg-gradient-4: #ffd1ff;
+    --glass-bg: rgba(255, 255, 255, 0.68);
+    --glass-border: rgba(255, 255, 255, 0.86);
+    --glass-shadow: rgba(236, 64, 122, 0.15);
+    --text-primary: #383838;
+    --text-secondary: #6e4f70;
+    --accent-primary: #ec407a;
+    --accent-secondary: #38bdf8;
+    --badge-bg: rgba(255, 255, 255, 0.82);
+    --card-inner: rgba(255, 255, 255, 0.58);
+}
+
+[data-theme="skyblue"] {
+    --bg-gradient-1: #bae6fd;
+    --bg-gradient-2: #7dd3fc;
+    --bg-gradient-3: #e0f2fe;
+    --bg-gradient-4: #fbcfe8;
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.9);
+    --glass-shadow: rgba(14, 165, 233, 0.18);
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --accent-primary: #0284c7;
+    --accent-secondary: #ec4899;
+    --badge-bg: rgba(255, 255, 255, 0.85);
+    --card-inner: rgba(255, 255, 255, 0.65);
+}
+
+[data-theme="galaxy"] {
+    --bg-gradient-1: #0d0620;
+    --bg-gradient-2: #1c0f3b;
+    --bg-gradient-3: #350d47;
+    --bg-gradient-4: #120824;
+    --glass-bg: rgba(28, 16, 56, 0.66);
+    --glass-border: rgba(255, 150, 230, 0.25);
+    --glass-shadow: rgba(236, 72, 153, 0.28);
+    --text-primary: #fdf2f8;
+    --text-secondary: #f5d0fe;
+    --accent-primary: #ff5ca8;
+    --accent-secondary: #38bdf8;
+    --badge-bg: rgba(255, 255, 255, 0.12);
+    --card-inner: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="sunset"] {
+    --bg-gradient-1: #ffecd2;
+    --bg-gradient-2: #fcb69f;
+    --bg-gradient-3: #ff9a9e;
+    --bg-gradient-4: #fecfef;
+    --glass-bg: rgba(255, 250, 245, 0.68);
+    --glass-border: rgba(255, 255, 255, 0.86);
+    --glass-shadow: rgba(251, 113, 133, 0.18);
+    --text-primary: #3b1d1e;
+    --text-secondary: #7c4346;
+    --accent-primary: #f43f5e;
+    --accent-secondary: #fb923c;
+    --badge-bg: rgba(255, 255, 255, 0.82);
+    --card-inner: rgba(255, 255, 255, 0.58);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Con trỏ chuột Trái Tim Cute trên PC/Laptop */
+@media (pointer: fine) {
+    body {
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><text x='2' y='20' font-size='20'>💖</text></svg>") 10 10, auto;
+    }
+}
+
+html, body {
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    color: var(--text-primary);
+    background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-gradient-4));
+    background-size: 350% 350%;
+    animation: gradientBG 16s ease infinite;
+    overflow-x: hidden;
+    text-shadow: 0.3px 0.3px 0.3px rgba(0, 0, 0, 0.1);
+    transition: color 0.4s ease;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ==========================================
+   2. CÁC PHẦN TỬ ĐẶC TRƯNG TỪ FILE HTML CŨ
+   ========================================== */
+#mask {
+    background-image: linear-gradient(to top, #6d44cc5d 0%, #f09cd880 100%);
+    opacity: 0.32;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.classic-h1 {
+    font-weight: 800;
+    text-align: center;
+    color: var(--accent-primary);
+}
+
+#clock-box #clock,
+.classic-clock-pill {
+    background-image: linear-gradient(to right, #ffc3a0 0%, #ffafbd 100%);
+    border-radius: 10rem;
+    border: 2px solid rgba(255, 255, 255, 0.88);
+    box-shadow: 0 12px 30px rgba(236, 64, 122, 0.22);
+    text-align: center;
+}
+
+date, time {
+    display: block;
+}
+
+.avt {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #ffffff;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 640px) {
+    .avt {
+        width: 112px;
+        height: 112px;
+    }
+}
+
+/* ==========================================
+   3. GLASSMORPHISM, 3D TILT & DYNAMIC ISLAND
+   ========================================== */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1.5px solid var(--glass-border);
+    box-shadow: 0 20px 50px var(--glass-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.glass-pill {
+    background: var(--badge-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 24px var(--glass-shadow);
+    transition: all 0.25s ease;
+}
+
+.glass-inner {
+    background: var(--card-inner);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-inner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px var(--glass-shadow);
+}
+
+.dynamic-island {
+    background: rgba(15, 12, 24, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32), 0 0 25px rgba(255, 59, 127, 0.22);
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.numpad-key {
+    height: 3.4rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+.numpad-key:hover { background: rgba(255, 255, 255, 0.22); }
+.numpad-key:active { transform: scale(0.9); }
+
+/* ==========================================
+   4. THẺ LẬT 3D & TRÁI TIM ĐẬP
+   ========================================== */
+.flip-card-perspective {
+    perspective: 1100px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-style: preserve-3d;
+}
+
+.flip-card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(180deg);
+}
+
+.avatar-ring {
+    position: relative;
+    padding: 5px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #38bdf8, #ff3b7f, #a855f7, #38bdf8);
+    background-size: 300% 300%;
+    animation: spinGradient 5s linear infinite;
+    box-shadow: 0 10px 28px rgba(56, 189, 248, 0.3);
+}
+
+@keyframes spinGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.heart-beat {
+    animation: heartPulse 1.3s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    filter: drop-shadow(0 8px 18px rgba(185, 13, 70, 0.4));
+}
+
+@keyframes heartPulse {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.22); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.16); }
+    70% { transform: scale(1); }
+}
+
+.pulse-ring {
+    position: absolute;
+    border-radius: 9999px;
+    border: 2px solid var(--accent-primary);
+    animation: rippleRing 2.4s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+}
+
+.pulse-ring-delay {
+    animation-delay: 1.2s;
+}
+
+@keyframes rippleRing {
+    0% { width: 48px; height: 48px; opacity: 0.75; }
+    100% { width: 130px; height: 130px; opacity: 0; }
+}
+
+/* ==========================================
+   5. ĐĨA THAN SPOTIFY & SÓNG NHẠC
+   ========================================== */
+.vinyl-disc {
+    background: radial-gradient(circle, #ff4b8b 0%, #ff4b8b 18%, #18181b 19%, #27272a 32%, #18181b 33%, #27272a 48%, #09090b 50%, #27272a 68%, #09090b 100%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    animation: spinVinyl 6s linear infinite;
+    animation-play-state: paused;
+}
+
+.vinyl-disc.playing {
+    animation-play-state: running;
+}
+
+@keyframes spinVinyl {
+    100% { transform: rotate(360deg); }
+}
+
+.viz-bar {
+    width: 4px;
+    background: linear-gradient(to top, var(--accent-primary), var(--accent-secondary));
+    border-radius: 9999px;
+    height: 6px;
+    transition: height 0.15s ease;
+}
+
+.playing-viz .viz-bar {
+    animation: vizBounce var(--dur, 0.6s) ease-in-out infinite alternate;
+}
+
+@keyframes vizBounce {
+    0% { height: 5px; opacity: 0.6; }
+    100% { height: var(--max-h, 26px); opacity: 1; }
+}
+
+/* ==========================================
+   6. POLAROID, CHIBI PETS & MINI-GAME
+   ========================================== */
+.polaroid-card {
+    background: #ffffff;
+    color: #1f2937;
+    padding: 10px 10px 24px 10px;
+    border-radius: 14px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+}
+
+.polaroid-card:hover {
+    transform: translateY(-8px) rotate(0deg) scale(1.03) !important;
+    box-shadow: 0 22px 40px rgba(255, 59, 127, 0.25);
+    z-index: 20;
+}
+
+.washi-tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 72px;
+    height: 20px;
+    background: rgba(186, 230, 253, 0.78);
+    backdrop-filter: blur(4px);
+    border-left: 2px dashed rgba(255, 255, 255, 0.7);
+    border-right: 2px dashed rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.envelope-card {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.envelope-card:hover {
+    transform: translateY(-6px);
+}
+
+@keyframes petJump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+.pet-bounce {
+    display: inline-block;
+    animation: petJump 1.6s ease-in-out infinite;
+}
+
+@keyframes popInModal {
+    0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.animate-pop-in {
+    animation: popInModal 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+.shake-anim {
+    animation: shakeError 0.4s ease-in-out;
+}
+
+.bio-scanner-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 9999px;
+    border: 2px solid #ff3b7f;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: all 0.3s ease;
+}
+.bio-scanning .bio-scanner-ring {
+    opacity: 1;
+    transform: scale(1.25);
+    animation: bioPulse 0.8s ease-out infinite;
+}
+@keyframes bioPulse {
+    0% { transform: scale(0.95); opacity: 0.9; }
+    100% { transform: scale(1.45); opacity: 0; }
+}
+
+.text-gradient-love {
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.burst-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    animation: flyUpFade 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes flyUpFade {
+    0% { opacity: 1; transform: translate(0, 0) scale(0.5) rotate(0deg); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1.3) rotate(var(--rot)); }
+}
+
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(236, 64, 122, 0.35); border-radius: 9999px; }
